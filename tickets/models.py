@@ -44,4 +44,4 @@ class Ticket(models.Model):
     def __str__(self):
         """String convertions"""
 
-        return f"{self.prpject} - {self.name}"
+        return f"{self.project} - {self.name}"

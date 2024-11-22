@@ -59,7 +59,7 @@ ROOT_URLCONF = "django_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -129,14 +129,39 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Log in settings
-LOGIN_REDIRECT_URL = "adminlte2_pdq:home"
+LOGIN_REDIRECT_URL = "project_list"
 
 # adminlte2 PDQ setings
 ADMINLTE2_USE_LOGIN_REQUIRED = True
-ADMINLTE2_HOME_ROUTE = "adminlte2_pdq:home"
+ADMINLTE2_HOME_ROUTE = "project_list"
 ADMINLTE2_LOGO_TEXT = "Ticket Tracking"
 ADMINLTE2_LOGO_TEXT_SMALL = "TT"
 
 ADMINLTE2_INCLUDE_ADMIN_HOME_LINK = True
 ADMINLTE2_INCLUDE_MAIN_NAV_ON_ADMIN_PAGES = True
 ADMINLTE2_INCLUDE_ADMIN_NAV_ON_MAIN_PAGES = True
+
+
+# AdminLTE2 Menu
+ADMINLTE2_MENU = [
+    {
+        "text": "Home",
+        "nodes": [
+            {
+                "route": "project_list",
+                "text": "Projects",
+                "icon": "fa fa-archive",
+            },
+        ],
+    },
+    {
+        "text": "Profile",
+        "nodes": [
+            {
+                "route": "password_change",
+                "text": "Change Password",
+                "icon": "fa fa-lock",
+            },
+        ],
+    },
+]

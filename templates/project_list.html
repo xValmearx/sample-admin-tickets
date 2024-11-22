@@ -1,0 +1,90 @@
+{% extends "adminlte2/base.html" %}
+
+{% block title %}
+Projects
+{% endblock title %}
+
+{% block page_name %}
+Projects
+{% endblock page_name %}
+
+{% block page_description %}
+All projects avalible in the system
+{% endblock page_description %}
+
+{% block breadcrumbs %}
+<ol class = "breadcrumbs">
+  <li><i class = "fa fa-dashboard"></i>Home</li>
+</ol>
+{% endblock breadcrumbs %}
+
+{% block content %}
+  <div class = "row">
+    <div class = "col-md-12">
+      <a href = "#" class = "btn btn-success pull-right">
+        <i class = "fa fa-plus"></i> New Project </a>
+    </div>
+  </div>
+  <br>
+
+  {% for project in project_list %}
+    <div class = "box box-solid box-primary">
+
+      <div class = "box-header with-boarder">
+        <h3 class = "box-title">{{project.name}}</h3>
+      </div>
+
+      <div class = "box-body">
+
+        <div class = "row">
+
+          <div class = "col-md-3">
+            <a href = "3" class = "btn btn-primary btn-block">View Project Details</a>
+            <br>
+            <a href = "#" class = "btn btn-info btn-block">Update Project Details</a>
+
+          </div>
+
+          <div class = "col-md-3">
+            <div class = "info-box">
+              <span class = "info-box-icon bg-blue">
+                <i class = "fa fa-ticket"></i>
+              </span>
+              <div class = "info-box-content">
+                <span class = "info-box-text">Open Tickets</span>
+                <span class = "info-block-number">????</span>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col-md-3">
+            <div class = "info-box">
+              <span class = "info-box-icon bg-purple">
+                <i class = "fa fa-ticket"></i>
+              </span>
+              <div class = "info-box-content">
+                <span class = "info-box-text">Closed Tickets</span>
+                <span class = "info-block-number">????</span>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col-md-3">
+            <div class = "info-box">
+              <span class = "info-box-icon bg-aqua">
+                <i class = "fa fa-ticket"></i>
+              </span>
+              <div class = "info-box-content">
+                <span class = "info-box-text">Members</span>
+                <span class = "info-block-number">{{project.members.count}}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+{% endblock content %}
+
