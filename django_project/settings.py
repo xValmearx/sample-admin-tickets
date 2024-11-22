@@ -31,7 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # our custom apps
     "adminlte2_pdq",
+    "tickets.apps.TicketsConfig",
+    # djago installed apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -129,7 +132,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "adminlte2_pdq:home"
 
 # adminlte2 PDQ setings
-ADMINLTE2_USE_LOGIN_REDIRECT = True
+ADMINLTE2_USE_LOGIN_REQUIRED = True
 ADMINLTE2_HOME_ROUTE = "adminlte2_pdq:home"
 ADMINLTE2_LOGO_TEXT = "Ticket Tracking"
 ADMINLTE2_LOGO_TEXT_SMALL = "TT"
