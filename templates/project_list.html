@@ -21,7 +21,7 @@ All projects avalible in the system
 {% block content %}
   <div class = "row">
     <div class = "col-md-12">
-      <a href = "#" class = "btn btn-success pull-right">
+      <a href = {% url "project_create" %} class = "btn btn-success pull-right">
         <i class = "fa fa-plus"></i> New Project </a>
     </div>
   </div>
@@ -39,9 +39,9 @@ All projects avalible in the system
         <div class = "row">
 
           <div class = "col-md-3">
-            <a href = "3" class = "btn btn-primary btn-block">View Project Details</a>
+            <a href = {% url "project_detail" project.id %} class = "btn btn-primary btn-block">View Project Details</a>
             <br>
-            <a href = "#" class = "btn btn-info btn-block">Update Project Details</a>
+            <a href = {% url "project_update" project.id %} class = "btn btn-info btn-block">Update Project Details</a>
 
           </div>
 
@@ -52,7 +52,7 @@ All projects avalible in the system
               </span>
               <div class = "info-box-content">
                 <span class = "info-box-text">Open Tickets</span>
-                <span class = "info-block-number">????</span>
+                <span class = "info-block-number">{{project.open_tickets.count}}</span>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ All projects avalible in the system
               </span>
               <div class = "info-box-content">
                 <span class = "info-box-text">Closed Tickets</span>
-                <span class = "info-block-number">????</span>
+                <span class = "info-block-number">{{project.closed_tickets.count}}</span>
               </div>
             </div>
           </div>
