@@ -63,6 +63,61 @@ class ProjectEditView(UpdateView):
 class TicketCreateView(CreateView):
     """Create a new ticket"""
 
+    model = Ticket
+    template_name = "ticket_create.html"
+    fields = ["name", "description", "priority", "complete_by", "complete"]
+
+    def get(self, request, project_pk, *args, **kwargs):
+        """Handel Get Request"""
+        self.project_pk = project_pk
+        return super().get(request, project_pk, *args, **kwargs)
+
+    def post(self, request, project_pk, *args, **kwargs):
+        """Handle Post Request"""
+        self.project_pk = project_pk
+        return super().get(request, project_pk, *args, **kwargs)
+
+    def get_context_data(self):
+        """add veribles to the template context"""
+        context = super().get_context_data()
+        context["project"] = Project.objects.get(pk=self.project_pk)
+        return context
+
+    def form_valid(self, form):
+        """code to run when is valid"""
+        form.instance.project = Project.objects.get(pk=self.project_pk)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """return the location to the redirect"""
+        messages.success(self.request, "Ticket Created Successfully")
+        return reverse("project_detail", kwargs={"pk": self.project_pk})
+
 
 class TicketEditView(UpdateView):
     """Update an existing ticket"""
+
+    model = Ticket
+    template_name = "ticket_create.html"
+    fields = ["name", "description", "priority", "complete_by", "complete"]
+
+    def get(self, request, project_pk, *args, **kwargs):
+        """Handel Get Request"""
+        self.project_pk = project_pk
+        return super().get(request, project_pk, *args, **kwargs)
+
+    def post(self, request, project_pk, *args, **kwargs):
+        """Handle Post Request"""
+        self.project_pk = project_pk
+        return super().get(request, project_pk, *args, **kwargs)
+
+    def get_context_data(self):
+        """add veribles to the template context"""
+        context = super().get_context_data()
+        context["project"] = Project.objects.get(pk=self.project_pk)
+        return context
+
+    def get_success_url(self):
+        """return the location to the redirect"""
+        messages.success(self.request, "Ticket Updated Successfully")
+        return reverse("project_detail", kwargs={"pk": self.project_pk})
